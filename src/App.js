@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// import 'normalize.css';
+import './css/app.scss';
+
+import { withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+import Root from "./clients/r-acc/root";
+
+const styles = {
+  root: {
+    height: "100%",
+    width: "100%",
+    margin: "auto",
+    fontFamily: ["Nunito Sans", "Roboto", "Helvetica", "Arial", "sans-serif"],
+  }
+};
+
+const theme = createMuiTheme({
+  typography: {
+    useNextVariants: true,
+  }
+});
+
+class App extends Component {
+
+  render() {
+    const {classes} = this.props;
+
+    return (
+        <MuiThemeProvider theme={theme}>
+          <div className={classes.root}>
+            <Root />
+          </div>
+        </MuiThemeProvider>
+    );
+  }
+
 }
 
-export default App;
+
+App.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(App);
