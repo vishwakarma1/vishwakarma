@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Grid from '@material-ui/core/Grid';
 import withWidth from "@material-ui/core/withWidth";
 import {withStyles} from "@material-ui/core/styles";
+
+import ImagePopup from "./image_with_popup";
 
 const styles = {
     imagesBackground: {
@@ -25,13 +26,11 @@ class Images extends React.Component {
     };
 
     imageGrid(){
-        const {classes, metadata: {images}} = this.props;
+        const {metadata: {images}} = this.props;
 
-        const image_grid = images.map((image, index) => {
+        const image_grid = images.map((image) => {
             return(
-                <div style={{marginBottom: '24px'}}>
-                    <img src={image} alt="image new" style={{width: '100%'}}/>
-                </div>
+                <ImagePopup image={image}/>
             );
         });
 

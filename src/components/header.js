@@ -29,7 +29,7 @@ const styles = {
     subGrid: {
         width: "auto",
     },
-    menuDrawerContainer: {
+    menuContainer: {
         width: 200
     },
     menuLinkExpanded: {
@@ -44,7 +44,6 @@ class Header extends React.Component {
         super();
         this.state = {
             menuOpen: false,
-            dropOpen: false,
         };
     };
 
@@ -71,14 +70,13 @@ class Header extends React.Component {
         const menuItemComponents = mainMenuItems.map((menuItem, index) => {
             return(
                 <ListItem key={index}
-                          button component="a" href={menuItem.url}
-                >
-                    <ListItemText primary={menuItem.name} />
+                          button component="a" href={menuItem.url}>
+                    <ListItemText primary={menuItem.name} className="black_title"/>
                 </ListItem>
             )
         });
         return (
-            <div className={classes.menuDrawerContainer}>
+            <div className={classes.menuContainer}>
                 <List>{menuItemComponents}</List>
             </div>
         );
@@ -99,8 +97,21 @@ class Header extends React.Component {
 
     renderMenuAndLogin() {
         const {classes} = this.props;
-        const list = this.renderMenuList();
-        return this.renderMenu();
+        if (isWidthUp("md", this.props.width)) {
+            return this.renderMenu();
+        } else {
+            const list = this.renderMenuList();
+            return (
+                <React.Fragment>
+                    <IconButton className="pointer" onClick={this.toggleMenuDrawer(true)}>
+                        <MenuIcon />
+                    </IconButton>
+                    <Drawer anchor="right" open={this.state.menuOpen} onClose={this.toggleMenuDrawer(false)}>
+                        {list}
+                    </Drawer>
+                </React.Fragment>
+            );
+        }
     };
 
     render() {
