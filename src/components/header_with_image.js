@@ -16,14 +16,15 @@ const styles = {
         position: 'relative'
     },
     headerBackground:{
-        position: 'absolute',
-        width: '100%',
-        top: '0'
+        width: '100%'
     },
     headerBody: {
         padding: '24px 48px',
         minHeight: '600px',
-        position: 'relative'
+        position: 'absolute',
+        left: '0',
+        right: '0',
+        zIndex: '99'
     },
     subGrid: {
         width: 'auto',
@@ -105,8 +106,7 @@ class HeaderImage extends React.Component {
     render() {
         const {classes, metadata: {name, background}} = this.props;
         return (
-            <div className={classes.header}>
-                <img src={background} alt={name} className={classes.headerBackground}/>
+            <div>
                 <div className={classes.headerBody}>
                     <Grid container direction="row" justify="space-between" alignItems="center">
                         <Grid container className={classes.subGrid}>
@@ -116,6 +116,9 @@ class HeaderImage extends React.Component {
                             {this.renderMenuGrid()}
                         </Grid>
                     </Grid>
+                </div>
+                <div className={classes.header}>
+                    <img src={background} alt={name} className={classes.headerBackground}/>
                 </div>
             </div>
         );

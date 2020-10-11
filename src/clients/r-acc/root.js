@@ -14,7 +14,7 @@ import Hidden from '@material-ui/core/Hidden';
 import { withStyles } from '@material-ui/core/styles';
 
 import {
-    Header, HeaderImage, Images, Theme
+    Header, HeaderImage, Images, Theme, Contact
 } from "./../../components/common";
 import data from "./data";
 
@@ -44,6 +44,28 @@ const styles = (theme) => ({
 
 class Root extends React.Component {
 
+    renderDesign = () => {
+        const {images} = data;
+        return (
+            <div style={{margin: '48px 0px'}}>
+                <div className="black_title" style={{width: '28%',margin: '48px auto', fontSize: '28px'}}>
+                    " CREATE WITH THE HEART, BUILD WITH THE MIND. "
+                </div>
+                <div>
+                    <div style={{display: 'flex', margin: '24px auto', width: '44%'}}>
+                        <img src={images[0]}  style={{width: '320px'}}/>
+                        <div className="black_title" style={{backgroundColor: 'antiquewhite',padding: '16px',margin: '70px 16px'}}>Immersive storytelling by design</div>
+                    </div>
+                    <div style={{display: 'flex', margin: '36px auto', width: '44%'}}>
+                        <div className="black_title" style={{backgroundColor: 'darkgray',padding: '16px',margin: '70px 0px 70px 48px'}}>We're designing for life</div>
+                        <img src={images[1]}  style={{width: '320px'}}/>
+                    </div>
+                </div>
+            </div>
+        );
+    };
+
+
     render() {
         return (
             <React.Fragment>
@@ -59,6 +81,9 @@ class Root extends React.Component {
                         </Route>
                         <Route path="/">
                             <HeaderImage metadata={data} />
+                            {this.renderDesign()}
+                            <Images metadata={data} />
+                            <Contact metadata={data} />
                         </Route>
                     </Switch>
                 </Router>

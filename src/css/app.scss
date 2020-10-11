@@ -53,6 +53,11 @@ a {
   font-size: 24px;
 }
 
+.black_body{
+  color: #000;
+  font-size: 14px;
+}
+
 .image_grid{
   column-count: 3;
   column-gap: 24px;
@@ -75,4 +80,8 @@ a {
 
 .full-width{
   width: 100%;
+}
+
+.background-white{
+  background-color: #fff;
 }

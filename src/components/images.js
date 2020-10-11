@@ -7,9 +7,6 @@ import {withStyles} from "@material-ui/core/styles";
 import ImagePopup from "./image_with_popup";
 
 const styles = {
-    imagesBackground: {
-        background: '#fff',
-    },
     imageGrid: {
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
@@ -44,9 +41,9 @@ class Images extends React.Component {
     render() {
         const {classes, metadata: {imagePageName}} = this.props;
         return (
-            <div className={classes.imagesBackground}>
-                <div style={{padding: '12px 48px'}}>
-                    <span className="black_body_big">{imagePageName}</span>
+            <div className="background-white">
+                <div style={{padding: '24px 0px', margin: 'auto', width: '200px'}}>
+                    <span className="black_title_big">{imagePageName}</span>
                 </div>
                 {this.imageGrid()}
             </div>
