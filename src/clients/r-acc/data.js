@@ -21,11 +21,11 @@ let data = {
     mainMenuItems: [
         {
             name: "Portfolio",
-            url: "/portfolio",
+            url: "#portfolio",
         },
         {
             name: "Contact",
-            url: "/contact",
+            url: "#contact",
         },
     ],
     imagePageName: "Portfolio",

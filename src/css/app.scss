@@ -85,3 +85,19 @@ a {
 .background-white{
   background-color: #fff;
 }
+
+.hide_below_720{
+  @media screen and (max-width: 720px) {
+    display: none;
+  }
+}
+
+.black_big_text{
+  width: 28%;
+  margin: 48px auto;
+  font-size: 28px;
+  @media screen and (max-width: 720px) {
+    width: 68%;
+    font-size: 18px;
+  }
+}

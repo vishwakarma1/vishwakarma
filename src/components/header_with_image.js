@@ -53,7 +53,7 @@ class HeaderImage extends React.Component {
         const menuItemComponents = mainMenuItems.map((menuItem, index) => {
             return(
                 <ListItem key={index}
-                          button component="a" href={menuItem.url}>
+                          button component="AnchorLink" href={menuItem.url}>
                     <ListItemText primary={menuItem.name} className="black_title"/>
                 </ListItem>
             )

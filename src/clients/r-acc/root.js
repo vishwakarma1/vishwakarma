@@ -12,9 +12,10 @@ import Hidden from '@material-ui/core/Hidden';
 // import { FaFacebookF, FaLinkedinIn, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 import { withStyles } from '@material-ui/core/styles';
+import ScrollableAnchor from 'react-scrollable-anchor';
 
 import {
-    Header, HeaderImage, Images, Theme, Contact
+    Header, HeaderImage, Images, Theme, Contact, ContactForm
 } from "./../../components/common";
 import data from "./data";
 
@@ -48,10 +49,10 @@ class Root extends React.Component {
         const {images} = data;
         return (
             <div style={{margin: '48px 0px'}}>
-                <div className="black_title" style={{width: '28%',margin: '48px auto', fontSize: '28px'}}>
+                <div className="black_big_text">
                     " CREATE WITH THE HEART, BUILD WITH THE MIND. "
                 </div>
-                <div>
+                <div className="hide_below_720">
                     <div style={{display: 'flex', margin: '24px auto', width: '44%'}}>
                         <img src={images[0]}  style={{width: '320px'}}/>
                         <div className="black_title" style={{backgroundColor: 'antiquewhite',padding: '16px',margin: '70px 16px'}}>Immersive storytelling by design</div>
@@ -73,20 +74,18 @@ class Root extends React.Component {
                     <title>{data.name}</title>
                     <link rel="shortcut icon" href={data.favicon} />
                 </Helmet>
-                <Router>
-                    <Switch>
-                        <Route path="/portfolio">
-                            <Header metadata={data} />
-                            <Images metadata={data} />
-                        </Route>
-                        <Route path="/">
-                            <HeaderImage metadata={data} />
-                            {this.renderDesign()}
-                            <Images metadata={data} />
-                            <Contact metadata={data} />
-                        </Route>
-                    </Switch>
-                </Router>
+                <HeaderImage metadata={data} />
+                {this.renderDesign()}
+                <ScrollableAnchor id={"portfolio"}>
+                    <div>
+                        <Images metadata={data} />
+                    </div>
+                </ScrollableAnchor>
+                <ScrollableAnchor id={"contact"}>
+                    <div>
+                        <ContactForm />
+                    </div>
+                </ScrollableAnchor>
 
             </React.Fragment>
         );
